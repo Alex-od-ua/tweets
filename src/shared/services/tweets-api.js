@@ -14,7 +14,7 @@ export const updateCard = async data => {
   return result;
 };
 
-export const deleteContacts = async id => {
+export const deleteCard = async id => {
   const { data } = await instance.delete(`/TweetCard/${id}`);
   return data;
 };
