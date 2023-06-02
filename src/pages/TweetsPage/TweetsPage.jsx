@@ -1,9 +1,13 @@
 import { Container } from '@mui/material';
 
-// import TrendingMovies from 'components/Movies/TrendingMovies/TrendingMovies';
+import { Tweets } from '../../components/Tweets/Tweets';
 
 const TweetsPage = () => {
-  return <Container maxWidth="xl">{/* <TrendingMovies /> */}</Container>;
+  return (
+    <Container maxWidth="xl">
+      <Tweets />
+    </Container>
+  );
 };
 
 export default TweetsPage;
