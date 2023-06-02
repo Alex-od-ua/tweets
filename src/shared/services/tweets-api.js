@@ -5,7 +5,7 @@ const instance = axios.create({
 
   params: {
     // page: 1,
-    limit: 5,
+    limit: 3,
   },
 });
 
