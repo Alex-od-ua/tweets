@@ -1,0 +1,2 @@
+"use strict";(self.webpackChunktweets=self.webpackChunktweets||[]).push([[674],{674:function(e,t,n){n.r(t),n.d(t,{default:function(){return c}});var s=n(939),u="HomePage_title__UFLA3",a=n(184),c=function(){return(0,a.jsx)(s.Z,{maxWidth:"xl",children:(0,a.jsx)("h2",{className:u,children:"Home Page"})})}}}]);
+//# sourceMappingURL=674.269c46b3.chunk.js.map
