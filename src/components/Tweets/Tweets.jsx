@@ -1,42 +1,69 @@
 import { useEffect, useState } from 'react';
-
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-import Loader from '../../shared/Loader/Loader';
 
 import { ReactComponent as Logo } from '../../images/Vector.svg';
 // import { ReactComponent as Boy } from '../../images/Boy.svg';
 import { ReactComponent as Picture } from '../../images/picture2 1.svg';
 // import Boy from '../../images/Boy.png';
 
+import Loader from '../../shared/Loader/Loader';
 import { getAllCards } from '../../shared/services/tweets-api';
+import { TweetsCategories } from './TweetsCategories/TweetsCategories';
 
 import styles from './Tweets.module.css';
 
 export const Tweets = () => {
   const [cards, setCards] = useState([]);
   const [page, setPage] = useState(1);
+  const [sort, setSort] = useState('');
+  const [categoryId, setCategoryId] = useState('all');
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
 
+  const fetchCards = async () => {
+    try {
+      setLoading(true);
+      const results = await getAllCards(page, sort);
+
+      setCards(prevCards => [...prevCards, ...results]);
+    } catch ({ response }) {
+      setError(response.data.mesage);
+      toast(`${response.data.mesage}`);
+    } finally {
+      setLoading(false);
+    }
+  };
+
   useEffect(() => {
-    const fetchCards = async () => {
-      try {
-        setLoading(true);
-        const results = await getAllCards(page);
-        setCards(prevCards => [...prevCards, ...results]);
-      } catch ({ response }) {
-        setError(response.data.mesage);
-        toast(`${response.data.mesage}`);
-      } finally {
-        setLoading(false);
-      }
-    };
     fetchCards();
-  }, [page, setCards]);
+  }, [sort, page]);
 
   const loadMore = () => {
     setPage(prevPage => prevPage + 1);
+  };
+
+  const changeCategory = id => {
+    setCategoryId(id);
+    if (id === 'all') {
+      setSort('all');
+      setCards([]);
+      setPage(1);
+      //   fetchCards();
+    }
+
+    if (id === 'followers') {
+      setSort('followers');
+      setCards([]);
+      setPage(1);
+      //   fetchCards();
+    }
+    if (id === 'tweets') {
+      setCards([]);
+      setPage(1);
+      setSort('tweets');
+      //   fetchCards();
+    }
   };
 
   const element = cards.map(({ name, tweets, followers, avatar, id }) => (
@@ -68,10 +95,18 @@ export const Tweets = () => {
     <div className={styles.tweet_wrapper}>
       {error && <p className={styles.error_massage}>{error}</p>}
       {loading && <Loader />}
+      <TweetsCategories
+        value={categoryId}
+        onChangeCategory={id => {
+          changeCategory(id);
+        }}
+      />
       <ul className={styles.tweet_list}>{element}</ul>
 
       <button
-        onClick={loadMore}
+        onClick={() => {
+          loadMore();
+        }}
         className={styles.load_more_button}
         type="button"
       >

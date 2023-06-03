@@ -1,0 +1,34 @@
+.categories {
+}
+
+.list {
+  display: flex;
+  list-style: none;
+}
+.item {
+  background-color: #ebd8ff;
+  padding: 13px 30px;
+  border-radius: 30px;
+  margin-right: 10px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.1s ease-in-out;
+  /* @include noselect(); */
+}
+
+.item:hover,
+.item:focus {
+  background: #c891ff;
+
+  /* background-color: darken(#f9f9f9, 2%); */
+}
+
+.item:active {
+  background-color: darken(#f9f9f9, 5%);
+}
+
+.active {
+  background-color: #282828;
+  transform: translateY(2px);
+  color: #fff;
+}
