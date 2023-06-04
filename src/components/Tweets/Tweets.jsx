@@ -63,6 +63,10 @@ export const Tweets = () => {
   };
 
   const changeCategory = type => {
+    if (type === sort || sortByFollowing === type) {
+      return;
+    }
+
     switch (type) {
       case 'all':
         setSort('all');
@@ -85,14 +89,14 @@ export const Tweets = () => {
         setPage(1);
         break;
 
-      case 'followers_false':
+      case 'false':
         setSortByFollowig('false');
         setSort('');
         setCards([]);
         setPage(1);
         break;
 
-      case 'followers_true':
+      case 'true':
         setSortByFollowig('true');
         setSort('');
         setCards([]);
@@ -124,6 +128,7 @@ export const Tweets = () => {
       {loading && <Loader />}
       <TweetsCategories
         value={sort}
+        sortByFollowingValue={sortByFollowing}
         onChangeCategory={type => {
           changeCategory(type);
         }}

@@ -7,11 +7,15 @@ const sortList = [
   { name: 'All tweets', type: 'all' },
   { name: 'Max tweets', type: 'tweets' },
   { name: 'Max followers', type: 'followers' },
-  { name: 'Follow', type: 'followers_false' },
-  { name: 'Followings', type: 'followers_true' },
+  { name: 'Follow', type: 'false' },
+  { name: 'Followings', type: 'true' },
 ];
 
-export const TweetsCategories = ({ value, onChangeCategory }) => {
+export const TweetsCategories = ({
+  value,
+  onChangeCategory,
+  sortByFollowingValue,
+}) => {
   const navigate = useNavigate();
 
   const [open, setOpen] = useState(false);
@@ -88,7 +92,9 @@ export const TweetsCategories = ({ value, onChangeCategory }) => {
                 }}
                 className={[
                   styles.sort_item,
-                  value === item.type ? styles.active : '',
+                  value === item.type || sortByFollowingValue === item.type
+                    ? styles.active
+                    : '',
                 ].join(' ')}
               >
                 {item.name}
