@@ -126,11 +126,23 @@
 
   cursor: pointer;
   transition: all 250ms cubic-bezier(0.4, 0, 0.2, 1);
+
+  font-family: 'Montserrat';
+  font-style: normal;
+  font-weight: 600;
+  font-size: 18px;
+  line-height: 22px;
+  text-transform: uppercase;
+  color: #373737;
+}
+
+.tweet_button_selected {
+  background: #5cd3a8;
 }
 
 .tweet_button:hover,
 .tweet_button:focus {
-  background: #c891ff;
+  /* background: #c891ff; */
 }
 
 .tweet_button:active {
@@ -143,9 +155,7 @@
   font-weight: 600;
   font-size: 18px;
   line-height: 22px;
-
   text-transform: uppercase;
-
   color: #373737;
 }
 

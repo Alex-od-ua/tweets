@@ -5,7 +5,7 @@ const instance = axios.create({
 
   params: {
     // page: 1,
-    limit: 3,
+    limit: 6,
   },
 });
 
@@ -22,10 +22,10 @@ export const getAllCards = async (page = 1, sort) => {
   return data;
 };
 
-// export const updateCard = async data => {
-//   const { data: result } = await instance.put(`/TweetCard/${id}`, data);
-//   return result;
-// };
+export const updateCard = async (id, data) => {
+  const { data: result } = await instance.put(`/TweetCard/${id}`, data);
+  return result;
+};
 
 // export const deleteCard = async id => {
 //   const { data } = await instance.delete(`/TweetCard/${id}`);
