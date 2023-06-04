@@ -10,8 +10,6 @@
 
 .tweet_card {
   position: relative;
-
-  /* padding: 28px 36px 36px 36px; */
   min-width: 300px;
   height: 460px;
 
@@ -130,9 +128,8 @@
   background: #5cd3a8;
 }
 
-.tweet_button:hover,
-.tweet_button:focus {
-  /* background: #c891ff; */
+.tweet_button:hover {
+  background: #c891ff;
 }
 
 .tweet_button:active {

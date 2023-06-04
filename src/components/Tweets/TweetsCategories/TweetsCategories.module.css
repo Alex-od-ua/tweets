@@ -1,49 +1,96 @@
-.categories {
-  margin-top: 50px;
-  padding-left: 70px;
-}
-
-.list {
+.sort {
+  position: relative;
   display: flex;
-  list-style: none;
-  padding: 0;
+  margin-top: 40px;
 }
-.item {
-  background-color: #ebd8ff;
-  padding: 4px 15px;
-  border-radius: 30px;
-  margin-right: 10px;
-  font-weight: bold;
+
+.sort_label {
+  display: flex;
+
+  align-items: center;
+  margin-left: auto;
+  margin-right: 30px;
+}
+
+.sort_svg {
+  margin-right: 8px;
+  transform: rotate(180deg);
+  transition: transform 250ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.sort_svg_open {
+  transform: rotate(360deg);
+  transition: transform 250ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.sort_text {
+  margin-right: 8px;
+}
+
+.sort_span {
   cursor: pointer;
-  transition: background-color 0.1s ease-in-out;
 }
 
-.item:hover,
-.item:focus {
-  background: #c891ff;
+.sort_popup {
+  position: absolute;
+  top: 45px;
+  right: -50px;
+  background: #ffffff;
+  box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.09);
+  border-radius: 10px;
+  overflow: hidden;
+  z-index: 99;
+}
+.sort_list {
+  margin: 0;
+  padding: 10px 20px;
+  overflow: hidden;
+}
+.sort_item {
+  list-style: none;
+  padding: 10px;
+  cursor: pointer;
+  border-radius: 10px;
 }
 
-.item:active {
-  background-color: darken(#f9f9f9, 5%);
+.sort_item:not(:last-child) {
+  margin-bottom: 5px;
+}
+
+.active,
+.sort_item:hover {
+  background: rgba(254, 95, 30, 0.05);
 }
 
 .active {
-  background-color: #282828;
-  transform: translateY(2px);
-  color: #fff;
+  font-weight: bold;
+  color: orangered;
 }
 
 .go_back_btn {
-  background-color: #ebd8ff;
-  padding: 4px 15px;
-  border-radius: 30px;
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  margin-left: 30px;
   font-weight: bold;
-  cursor: pointer;
-  transition: background-color 0.1s ease-in-out;
+  font-size: 15px;
+  padding: 15px;
   border: none;
+  background: #ebd8ff;
+  box-shadow: 0px 3.43693px 3.43693px rgba(0, 0, 0, 0.25);
+  border-radius: 10.3108px;
+  cursor: pointer;
+  transition: all 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-.go_back_btn:hover,
-.go_back_btn:focus {
-  background: #c891ff;
+.button_svg {
+  transform: rotate(270deg);
+}
+
+.go_back_btn:hover {
+  background-color: #c891ff;
+}
+
+.go_back_btn:active {
+  transform: translateY(2px);
 }

@@ -9,11 +9,12 @@ const instance = axios.create({
   },
 });
 
-export const getAllCards = async (page = 1, sort) => {
+export const getAllCards = async (page = 1, sort, sortByFollowing) => {
   const { data } = await instance.get('/TweetCard', {
     params: {
       page,
       sortBy: `${sort}`,
+      following: `${sortByFollowing}`,
       order: 'desc',
     },
   });

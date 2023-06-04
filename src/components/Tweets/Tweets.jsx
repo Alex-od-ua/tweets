@@ -8,23 +8,20 @@ import { updateCard } from '../../shared/services/tweets-api';
 import { TweetsCategories } from './TweetsCategories/TweetsCategories';
 import { TweetsList } from './TweetsList/TweetsList';
 
-// import { ReactComponent as Logo } from '../../images/Vector.svg';
-// import { ReactComponent as Picture } from '../../images/picture2 1.svg';
-
 import styles from './Tweets.module.css';
 
 export const Tweets = () => {
   const [cards, setCards] = useState([]);
   const [page, setPage] = useState(1);
   const [sort, setSort] = useState('all');
+  const [sortByFollowing, setSortByFollowig] = useState('');
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
 
   const fetchCards = async () => {
     try {
       setLoading(true);
-      const result = await getAllCards(page, sort);
-      console.log(result);
+      const result = await getAllCards(page, sort, sortByFollowing);
       setCards(prevCards => [...prevCards, ...result]);
 
       if (!result.length) {
@@ -48,9 +45,6 @@ export const Tweets = () => {
         ((cards[index].following = data.following),
         (cards[index].followers = result.followers))
       );
-      console.log(data);
-      console.log(result);
-      console.log(cards);
     } catch ({ response }) {
       setError(response.data.mesage);
       toast(`${response.data.mesage}`);
@@ -62,30 +56,52 @@ export const Tweets = () => {
   useEffect(() => {
     fetchCards();
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [page, sort]);
+  }, [page, sort, sortByFollowing]);
 
   const loadMore = () => {
     setPage(prevPage => prevPage + 1);
   };
 
-  const changeCategory = id => {
-    if (id === 'all') {
-      setSort('all');
-      setCards([]);
-      setPage(1);
-    }
+  const changeCategory = type => {
+    switch (type) {
+      case 'all':
+        setSort('all');
+        setSortByFollowig('');
+        setCards([]);
+        setPage(1);
+        break;
 
-    if (id === 'followers') {
-      setSort('followers');
-      setCards([]);
-      setPage(1);
+      case 'tweets':
+        setSort('tweets');
+        setSortByFollowig('');
+        setCards([]);
+        setPage(1);
+        break;
+
+      case 'followers':
+        setSort('followers');
+        setSortByFollowig('');
+        setCards([]);
+        setPage(1);
+        break;
+
+      case 'followers_false':
+        setSortByFollowig('false');
+        setSort('');
+        setCards([]);
+        setPage(1);
+        break;
+
+      case 'followers_true':
+        setSortByFollowig('true');
+        setSort('');
+        setCards([]);
+        setPage(1);
+        break;
+
+      default:
+        break;
     }
-    if (id === 'tweets') {
-      setSort('tweets');
-      setCards([]);
-      setPage(1);
-    }
-    console.log(sort);
   };
 
   const onFollowBtnClick = (id, value, index, name) => {
@@ -108,23 +124,24 @@ export const Tweets = () => {
       {loading && <Loader />}
       <TweetsCategories
         value={sort}
-        onChangeCategory={id => {
-          changeCategory(id);
+        onChangeCategory={type => {
+          changeCategory(type);
         }}
       />
       {cards && (
         <TweetsList cards={cards} onFollowBtnClick={onFollowBtnClick} />
       )}
-
-      <button
-        onClick={() => {
-          loadMore();
-        }}
-        className={styles.load_more_button}
-        type="button"
-      >
-        <span className={styles.load_more_button_text}>load more</span>
-      </button>
+      {cards && (
+        <button
+          onClick={() => {
+            loadMore();
+          }}
+          className={styles.load_more_button}
+          type="button"
+        >
+          <span className={styles.load_more_button_text}>load more</span>
+        </button>
+      )}
 
       <ToastContainer />
     </div>

@@ -4,8 +4,8 @@ import { ReactComponent as Picture } from '../../../images/picture2 1.svg';
 import styles from './TweetsList.module.css';
 
 export const TweetsList = ({ cards, onFollowBtnClick }) => {
-  const numberWithCommas = x => {
-    return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');
+  const numberWithCommas = item => {
+    return item.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');
   };
 
   const elements = cards.map(
