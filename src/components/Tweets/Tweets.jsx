@@ -59,14 +59,9 @@ export const Tweets = () => {
     }
   };
 
-  //   const numberWithSpaces = x => {
-  //     return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');
-  //   };
-
-  //   console.log(numberWithSpaces(100000000));
-
   useEffect(() => {
     fetchCards();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [page, sort]);
 
   const loadMore = () => {
