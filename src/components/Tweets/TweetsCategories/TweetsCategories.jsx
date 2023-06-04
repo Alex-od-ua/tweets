@@ -1,6 +1,7 @@
 import React from 'react';
 
 import styles from './TweetsCategories.module.css';
+import { useNavigate } from 'react-router-dom';
 
 const categories = [
   { name: 'All tweets', type: 'all' },
@@ -9,9 +10,17 @@ const categories = [
 ];
 
 export const TweetsCategories = ({ value, onChangeCategory }) => {
+  const navigate = useNavigate();
+
+  const onGoBackClick = () => {
+    navigate('/');
+  };
+
   return (
     <div className={styles.categories}>
-      {/* <p></p> */}
+      <button className={styles.go_back_btn} onClick={onGoBackClick}>
+        Go back
+      </button>
       <ul className={styles.list}>
         {categories.map((item, index) => (
           <li

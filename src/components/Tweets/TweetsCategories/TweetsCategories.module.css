@@ -1,26 +1,26 @@
 .categories {
+  margin-top: 50px;
+  padding-left: 70px;
 }
 
 .list {
   display: flex;
   list-style: none;
+  padding: 0;
 }
 .item {
   background-color: #ebd8ff;
-  padding: 13px 30px;
+  padding: 4px 15px;
   border-radius: 30px;
   margin-right: 10px;
   font-weight: bold;
   cursor: pointer;
   transition: background-color 0.1s ease-in-out;
-  /* @include noselect(); */
 }
 
 .item:hover,
 .item:focus {
   background: #c891ff;
-
-  /* background-color: darken(#f9f9f9, 2%); */
 }
 
 .item:active {
@@ -31,4 +31,19 @@
   background-color: #282828;
   transform: translateY(2px);
   color: #fff;
+}
+
+.go_back_btn {
+  background-color: #ebd8ff;
+  padding: 4px 15px;
+  border-radius: 30px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.1s ease-in-out;
+  border: none;
+}
+
+.go_back_btn:hover,
+.go_back_btn:focus {
+  background: #c891ff;
 }

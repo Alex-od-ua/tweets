@@ -6,9 +6,10 @@ import Loader from '../../shared/Loader/Loader';
 import { getAllCards } from '../../shared/services/tweets-api';
 import { updateCard } from '../../shared/services/tweets-api';
 import { TweetsCategories } from './TweetsCategories/TweetsCategories';
+import { TweetsList } from './TweetsList/TweetsList';
 
-import { ReactComponent as Logo } from '../../images/Vector.svg';
-import { ReactComponent as Picture } from '../../images/picture2 1.svg';
+// import { ReactComponent as Logo } from '../../images/Vector.svg';
+// import { ReactComponent as Picture } from '../../images/picture2 1.svg';
 
 import styles from './Tweets.module.css';
 
@@ -22,9 +23,13 @@ export const Tweets = () => {
   const fetchCards = async () => {
     try {
       setLoading(true);
-      const results = await getAllCards(page, sort);
+      const result = await getAllCards(page, sort);
+      console.log(result);
+      setCards(prevCards => [...prevCards, ...result]);
 
-      setCards(prevCards => [...prevCards, ...results]);
+      if (!result.length) {
+        toast('it`s all cards');
+      }
     } catch ({ response }) {
       setError(response.data.mesage);
       toast(`${response.data.mesage}`);
@@ -38,7 +43,11 @@ export const Tweets = () => {
       setLoading(true);
       const result = await updateCard(id, data);
 
-      setCards([...cards], (cards[index].following = data.following));
+      setCards(
+        [...cards],
+        ((cards[index].following = data.following),
+        (cards[index].followers = result.followers))
+      );
       console.log(data);
       console.log(result);
       console.log(cards);
@@ -49,6 +58,12 @@ export const Tweets = () => {
       setLoading(false);
     }
   };
+
+  //   const numberWithSpaces = x => {
+  //     return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');
+  //   };
+
+  //   console.log(numberWithSpaces(100000000));
 
   useEffect(() => {
     fetchCards();
@@ -78,47 +93,19 @@ export const Tweets = () => {
     console.log(sort);
   };
 
-  const onFollowBtnClick = (id, value, index) => {
-    const data = { following: !value };
+  const onFollowBtnClick = (id, value, index, name) => {
+    if (value === true) {
+      const data = { followers: cards[index].followers - 1, following: false };
+      fetchUpdateCards(id, data, index);
+      toast('Unfollow');
+    }
+    if (value === false) {
+      const data = { followers: cards[index].followers + 1, following: true };
+      fetchUpdateCards(id, data, index);
 
-    fetchUpdateCards(id, data, index);
+      toast(`Follow for ${name}`);
+    }
   };
-
-  const element = cards.map(
-    ({ name, tweets, followers, avatar, id, following }, index) => (
-      <li key={id} className={styles.tweet_card}>
-        <Logo className={styles.logo} />
-        <Picture className={styles.picture} />
-
-        <div className={styles.center_decor}>
-          <div className={styles.user_decor}>
-            <img
-              className={styles.avatar_img}
-              src={avatar}
-              alt="user avatar"
-            ></img>
-          </div>
-        </div>
-        <div className={styles.tweet_info}>
-          {/* <p className={styles.tweet_text}>{name} </p> */}
-          <p className={styles.tweet_text}>{tweets} tweets</p>
-          <p className={styles.tweet_text}>{followers} followers</p>
-        </div>
-        <button
-          key={id}
-          onClick={() => {
-            onFollowBtnClick(id, following, index);
-          }}
-          className={[
-            styles.tweet_button,
-            following ? styles.tweet_button_selected : '',
-          ].join(' ')}
-        >
-          {following ? 'following' : 'follow'}
-        </button>
-      </li>
-    )
-  );
 
   return (
     <div className={styles.tweet_wrapper}>
@@ -130,7 +117,9 @@ export const Tweets = () => {
           changeCategory(id);
         }}
       />
-      <ul className={styles.tweet_list}>{element}</ul>
+      {cards && (
+        <TweetsList cards={cards} onFollowBtnClick={onFollowBtnClick} />
+      )}
 
       <button
         onClick={() => {
