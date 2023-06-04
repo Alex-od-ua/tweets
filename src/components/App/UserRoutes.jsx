@@ -14,7 +14,7 @@ const UserRoutes = () => {
     <Suspense fallback={<Loader />}>
       <Routes>
         <Route path="/" element={<HomePage />} />
-        <Route path="/tweets" element={<TweetsPage />} />
+        <Route path="/tweetsPage" element={<TweetsPage />} />
         <Route path="*" element={<HomePage />} />
       </Routes>
     </Suspense>

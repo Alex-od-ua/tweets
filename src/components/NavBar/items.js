@@ -9,7 +9,7 @@ const items = [
   {
     id: nanoid(),
     text: 'Tweets',
-    link: '/tweets',
+    link: '/tweetsPage',
   },
 ];
 
