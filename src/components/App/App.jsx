@@ -5,7 +5,7 @@ import UserRoutes from './UserRoutes';
 
 const App = () => {
   return (
-    <BrowserRouter basename="/tweets">
+    <BrowserRouter basename="tweets">
       <NavBar />
       <UserRoutes />
     </BrowserRouter>
