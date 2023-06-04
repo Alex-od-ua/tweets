@@ -1,14 +1,9 @@
 import { NavLink } from 'react-router-dom';
-// import { useSelector } from 'react-redux';
 import { Container } from '@mui/material';
 
 import items from './items';
 
 import css from './NavBar.module.css';
-
-// const getFullName = ({ isActive }) => {
-//     return isActive ? `${css.link} ${css.active}` : css.link;
-// }
 
 const NavBar = () => {
   const elements = items.map(({ id, text, link }) => (

@@ -24,7 +24,6 @@ export const TweetsList = ({ cards, onFollowBtnClick }) => {
           </div>
         </div>
         <div className={styles.tweet_info}>
-          {/* <p className={styles.tweet_text}>{name} </p> */}
           <p className={styles.tweet_text}>{numberWithCommas(tweets)} tweets</p>
           <p className={styles.tweet_text}>
             {numberWithCommas(followers)} followers

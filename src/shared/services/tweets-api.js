@@ -19,7 +19,6 @@ export const getAllCards = async (page = 1, sort, sortByFollowing) => {
     },
   });
 
-  // console.log(data);
   return data;
 };
 
@@ -27,8 +26,3 @@ export const updateCard = async (id, data) => {
   const { data: result } = await instance.put(`/TweetCard/${id}`, data);
   return result;
 };
-
-// export const deleteCard = async id => {
-//   const { data } = await instance.delete(`/TweetCard/${id}`);
-//   return data;
-// };
