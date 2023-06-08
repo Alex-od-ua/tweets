@@ -1,11 +1,11 @@
 {
   "files": {
-    "main.css": "/tweets/static/css/main.416db7ba.css",
-    "main.js": "/tweets/static/js/main.95b70968.js",
+    "main.css": "/tweets/static/css/main.671ddce4.css",
+    "main.js": "/tweets/static/js/main.3e39a63d.js",
     "static/css/674.3ef5b766.chunk.css": "/tweets/static/css/674.3ef5b766.chunk.css",
     "static/js/674.269c46b3.chunk.js": "/tweets/static/js/674.269c46b3.chunk.js",
-    "static/css/906.431803c0.chunk.css": "/tweets/static/css/906.431803c0.chunk.css",
-    "static/js/906.aa748e07.chunk.js": "/tweets/static/js/906.aa748e07.chunk.js",
+    "static/css/906.68fa1370.chunk.css": "/tweets/static/css/906.68fa1370.chunk.css",
+    "static/js/906.335cfece.chunk.js": "/tweets/static/js/906.335cfece.chunk.js",
     "static/js/362.96236faa.chunk.js": "/tweets/static/js/362.96236faa.chunk.js",
     "static/media/Montserrat-SemiBold.ttf": "/tweets/static/media/Montserrat-SemiBold.d5e0cc788cba9ced1fb9.ttf",
     "static/media/Montserrat-Medium.ttf": "/tweets/static/media/Montserrat-Medium.c86e3b9010ff63c99166.ttf",
@@ -13,16 +13,16 @@
     "static/media/picture2 1.svg": "/tweets/static/media/picture2 1.23dcbc3cc8ccc9682f24b4acffb5efb2.svg",
     "static/media/Vector.svg": "/tweets/static/media/Vector.e917114d7945c04c85a8946a331d28b6.svg",
     "index.html": "/tweets/index.html",
-    "main.416db7ba.css.map": "/tweets/static/css/main.416db7ba.css.map",
-    "main.95b70968.js.map": "/tweets/static/js/main.95b70968.js.map",
+    "main.671ddce4.css.map": "/tweets/static/css/main.671ddce4.css.map",
+    "main.3e39a63d.js.map": "/tweets/static/js/main.3e39a63d.js.map",
     "674.3ef5b766.chunk.css.map": "/tweets/static/css/674.3ef5b766.chunk.css.map",
     "674.269c46b3.chunk.js.map": "/tweets/static/js/674.269c46b3.chunk.js.map",
-    "906.431803c0.chunk.css.map": "/tweets/static/css/906.431803c0.chunk.css.map",
-    "906.aa748e07.chunk.js.map": "/tweets/static/js/906.aa748e07.chunk.js.map",
+    "906.68fa1370.chunk.css.map": "/tweets/static/css/906.68fa1370.chunk.css.map",
+    "906.335cfece.chunk.js.map": "/tweets/static/js/906.335cfece.chunk.js.map",
     "362.96236faa.chunk.js.map": "/tweets/static/js/362.96236faa.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.416db7ba.css",
-    "static/js/main.95b70968.js"
+    "static/css/main.671ddce4.css",
+    "static/js/main.3e39a63d.js"
   ]
 }
