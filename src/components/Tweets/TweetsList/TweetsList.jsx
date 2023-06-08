@@ -19,7 +19,7 @@ export const TweetsList = ({ cards, onFollowBtnClick }) => {
             <img
               className={styles.avatar_img}
               src={avatar}
-              alt="user avatar"
+              alt={`${name} avatar`}
             ></img>
           </div>
         </div>

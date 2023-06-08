@@ -1,5 +1,5 @@
 import { lazy, Suspense } from 'react';
-import { Routes, Route } from 'react-router-dom';
+import { Routes, Route, Navigate } from 'react-router-dom';
 
 import Loader from '../../shared/Loader/Loader';
 
@@ -12,7 +12,7 @@ const UserRoutes = () => {
       <Routes>
         <Route path="/" element={<HomePage />} />
         <Route path="/tweetsPage" element={<TweetsPage />} />
-        <Route path="*" element={<HomePage />} />
+        <Route path="*" element={<Navigate to="/" replace />} />
       </Routes>
     </Suspense>
   );

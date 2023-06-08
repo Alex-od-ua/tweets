@@ -4,7 +4,6 @@ const instance = axios.create({
   baseURL: 'https://6477b5b0362560649a2ce1ec.mockapi.io/api/',
 
   params: {
-    // page: 1,
     limit: 6,
   },
 });

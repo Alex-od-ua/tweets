@@ -77,7 +77,7 @@ export const TweetsCategories = ({
             fill="#2C2C2C"
           />
         </svg>
-        <b className={styles.sort_text}>Sort by:</b>
+        <b className={styles.sort_text}>Sort by :</b>
         <span className={styles.sort_span}>{sort}</span>
       </div>
       {open && (
